@@ -128,6 +128,13 @@
       <Project>{9331096e-0c1a-4d20-958d-81e57b24773f}</Project>
       <Name>MirrorSUPINFO.Components</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Sources\Libraries\MirrorSUPINFO.SDK\MirrorSUPINFO.SDK.csproj">
+      <Project>{05ee98eb-5562-4ba6-b795-29c57f56a7a0}</Project>
+      <Name>MirrorSUPINFO.SDK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
