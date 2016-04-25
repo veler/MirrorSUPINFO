@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{2EE2A762-2B4D-46B1-B3B7-62D9885333B5}"
 EndProject
@@ -12,6 +12,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{87341B7A-1C8B-461F-B411-F7668874C160}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graphics", "Graphics", "{CACA7354-4059-4F0F-816D-BEDC87312A02}"
+	ProjectSection(SolutionItems) = preProject
+		Graphics\lock_screen.png = Graphics\lock_screen.png
+		Graphics\ratp_-_plan_de_l_itineraire.png = Graphics\ratp_-_plan_de_l_itineraire.png
+		Graphics\start_screen.png = Graphics\start_screen.png
+		Graphics\weather.png = Graphics\weather.png
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MirrorSUPINFO", "Sources\MirrorSUPINFO\MirrorSUPINFO.csproj", "{76787877-E806-46A3-BAA3-841DDF8FDD05}"
 EndProject
