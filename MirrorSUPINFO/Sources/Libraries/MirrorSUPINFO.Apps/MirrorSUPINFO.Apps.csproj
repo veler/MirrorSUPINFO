@@ -111,8 +111,8 @@
     <EmbeddedResource Include="Properties\MirrorSUPINFO.Apps.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Apps\" />
     <Folder Include="ComponentModel\" />
+    <Folder Include="Modules\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MirrorSUPINFO.Design\MirrorSUPINFO.Design.csproj">
