@@ -10,8 +10,15 @@ using System.Threading.Tasks;
 
 namespace MirrorSUPINFO.Components.ComponentModel.Services
 {
-    class ClockService
+    internal sealed class ClockService
     {
+        private static ClockService _ClockService;
+
+        internal static ClockService GetService()
+        {
+            return _ClockService ?? (_ClockService = new ClockService());
+        }
+
         private async Task<DateTime?> GetNistTime()
         {
             DateTime? dateTime = null;
