@@ -24,6 +24,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.Module
         public Tools()
         {
             NetworkService = NetworkManager.GetProvider();
+            CurrentDateTime = ClockService.GetService().Now;
             //TODO : NavigationService, AuthenticationService, CurrentDateTime
         }
 
