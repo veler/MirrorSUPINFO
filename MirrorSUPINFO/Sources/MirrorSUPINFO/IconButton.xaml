@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="MirrorSUPINFO.IconButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Name="IB">
+    <Grid>
+        <Button>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Image Source="{Binding ElementName=IB, Path=Image}"
+                       Width="{Binding ElementName=IB, Path=ImageWidth}"
+                       Height="{Binding ElementName=IB, Path=ImageHeight}"/>
+                <TextBlock Text="{Binding ElementName=IB, Path=Text}"
+                           Margin="10,0,0,0"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

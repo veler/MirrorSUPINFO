@@ -9,5 +9,8 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <local:IconButton Image="Assets/bus.png" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        ImageWidth="50" ImageHeight="50" Margin="10" />
+
     </Grid>
 </Page>

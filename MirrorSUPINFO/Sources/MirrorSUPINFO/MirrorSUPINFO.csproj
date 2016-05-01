@@ -95,6 +95,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IconButton.xaml.cs">
+      <DependentUpon>IconButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -115,12 +118,66 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Themes\Default\Icons\ratp.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_1.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_10.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_11.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_12.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_13.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_14.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_2.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_3.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_3bis.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_4.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_5.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_6.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_7.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_7bis.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_8.png" />
+    <Content Include="Themes\Default\Icons\ratp\M_9.png" />
+    <Content Include="Themes\Default\Icons\ratp\RER_A.png" />
+    <Content Include="Themes\Default\Icons\ratp\RER_B.png" />
+    <Content Include="Themes\Default\Icons\ratp\RER_C.png" />
+    <Content Include="Themes\Default\Icons\ratp\RER_D.png" />
+    <Content Include="Themes\Default\Icons\ratp\RER_E.png" />
+    <Content Include="Themes\Default\Icons\ratp\T_1.png" />
+    <Content Include="Themes\Default\Icons\ratp\T_2.png" />
+    <Content Include="Themes\Default\Icons\ratp\T_3a.png" />
+    <Content Include="Themes\Default\Icons\ratp\T_3b.png" />
+    <Content Include="Themes\Default\Icons\ratp\T_4.png" />
+    <Content Include="Themes\Default\Icons\ratp\T_5.png" />
+    <Content Include="Themes\Default\Icons\ratp\T_6.png" />
+    <Content Include="Themes\Default\Icons\ratp\T_7.png" />
+    <Content Include="Themes\Default\Icons\ratp\T_8.png" />
+    <Content Include="Themes\Default\Icons\ratp\walking_96px.png" />
+    <Content Include="Themes\Default\Icons\social\twitter_96px.png" />
+    <Content Include="Themes\Default\Icons\system\angle_left_96px.png" />
+    <Content Include="Themes\Default\Icons\system\angle_right_96px.png" />
+    <Content Include="Themes\Default\Icons\system\error_96px.png" />
+    <Content Include="Themes\Default\Icons\system\home_96px.png" />
+    <Content Include="Themes\Default\Icons\system\info_96px.png" />
+    <Content Include="Themes\Default\Icons\system\wifi_96px.png" />
+    <Content Include="Themes\Default\Icons\Transport\bus.png" />
+    <Content Include="Themes\Default\Icons\Transport\bus.svg" />
+    <Content Include="Themes\Default\Icons\weather\chance_of_storm_96px.png" />
+    <Content Include="Themes\Default\Icons\weather\fog_day_96px.png" />
+    <Content Include="Themes\Default\Icons\weather\partly_cloudy_day_96px.png" />
+    <Content Include="Themes\Default\Icons\weather\rain_96px.png" />
+    <Content Include="Themes\Default\Icons\weather\sleet_96px.png" />
+    <Content Include="Themes\Default\Icons\weather\snow_96px.png" />
+    <Content Include="Themes\Default\Icons\weather\storm_96px.png" />
+    <Content Include="Themes\Default\Icons\weather\sun_96px.png" />
+    <Content Include="Themes\Default\Icons\weather\wet_96px.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="IconButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
