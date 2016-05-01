@@ -5,9 +5,10 @@
     xmlns:local="using:MirrorSUPINFO"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:MirrorSUPINFO.Design.Controls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <controls:IconButton Image="calendar.png" HorizontalAlignment="Left" VerticalAlignment="Top" ImageWidth="50" ImageHeight="50" Margin="10" />
     </Grid>
 </Page>

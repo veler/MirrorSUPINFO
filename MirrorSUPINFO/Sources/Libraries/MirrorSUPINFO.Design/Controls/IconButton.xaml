@@ -1,0 +1,22 @@
+﻿<UserControl
+    x:Class="MirrorSUPINFO.Design.Controls.IconButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MirrorSUPINFO.Design.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    Name="Ib">
+
+    <Grid>
+        <Button>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Image Source="{Binding ElementName=Ib, Path=Image}"
+                       Width="{Binding ElementName=Ib, Path=ImageWidth}"
+                       Height="{Binding ElementName=Ib, Path=ImageHeight}"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>
