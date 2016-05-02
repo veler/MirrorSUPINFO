@@ -109,7 +109,6 @@
     <PRIResource Include="Strings\fr-FR\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="ComponentModel\Hardware\SparkFun_APDS9960.cs" />
     <Compile Include="ComponentModel\Hardware\SparkFun_APDS9960_Helper.cs" />
     <Compile Include="ComponentModel\Providers\LanguageManager.cs">
@@ -124,9 +123,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SettingManager.tt</DependentUpon>
     </Compile>
-
     <Compile Include="ComponentModel\Services\ClockService.cs" />
-
+    <Compile Include="ComponentModel\Services\DateTimeChangedEventArgs.cs" />
     <Compile Include="ComponentModel\Services\Module\ModuleManager.cs" />
     <Compile Include="ComponentModel\Services\Module\Tools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

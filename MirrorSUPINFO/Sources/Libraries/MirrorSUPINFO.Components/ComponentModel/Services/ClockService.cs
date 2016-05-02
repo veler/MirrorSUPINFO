@@ -1,11 +1,7 @@
 ﻿using MirrorSUPINFO.Components.ComponentModel.Providers.Networking;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
@@ -17,6 +13,11 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services
         #region Fields
 
         private static ClockService _clockService;
+
+        #endregion
+
+        #region Properties
+        
         public DateTime Now { get; private set; }
 
         #endregion
@@ -26,6 +27,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services
         public delegate void DateTimeChangedHandler(object sender, DateTimeChangedEventArgs args);
 
         public event DateTimeChangedHandler DateTimeChanged;
+
         #endregion
 
         #region Constructor
@@ -33,7 +35,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services
         public ClockService()
         {
             Internet.InternetConnectionChanged += Internet_InternetConnectionChanged;
-            DispatcherTimer timer = new DispatcherTimer();
+            var timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(1);
             timer.Tick += Timer_Tick;
             timer.Start();
@@ -45,7 +47,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services
             if (DateTimeChanged != null)
             {
                 var arg = new DateTimeChangedEventArgs();
-                arg.currentTime = Now;
+                arg.CurrentTime = Now;
                 DateTimeChanged(this, arg);
             }
         }
@@ -58,7 +60,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services
                 if (DateTimeChanged != null)
                 {
                     var arg = new DateTimeChangedEventArgs();
-                    arg.currentTime = Now;
+                    arg.CurrentTime = Now;
                     DateTimeChanged(this, arg);
                 }
                     
@@ -79,20 +81,19 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services
             DateTime? dateTime = null;
             try
             {
-                HttpClient httpClient = new HttpClient();
-                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri("http://nist.netservicesgroup.com:13/"));
-                Debug.WriteLine(request.ToString());
-                HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+                var httpClient = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Get, new Uri("http://nist.netservicesgroup.com:13/"));
+                var httpResponseMessage = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
          
                 if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
                 {
-                    string html = await httpResponseMessage.Content.ReadAsStringAsync();
-                    string time = Regex.Match(html, @"\d+:\d+:\d+").Value; //HH:mm:ss format
-                    string date = "20" + Regex.Match(html, @"\d+-\d+-\d+").Value; //20XX-MM-DD
+                    var html = await httpResponseMessage.Content.ReadAsStringAsync();
+                    var time = Regex.Match(html, @"\d+:\d+:\d+").Value; //HH:mm:ss format
+                    var date = "20" + Regex.Match(html, @"\d+-\d+-\d+").Value; //20XX-MM-DD
                     dateTime = DateTime.Parse((date + " " + time));
-                    TimeZoneInfo src = TimeZoneInfo.Utc;
-                    TimeZoneInfo tz = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
-                    Debug.WriteLine(TimeZoneInfo.ConvertTime((DateTime)dateTime, src, tz));
+                    var src = TimeZoneInfo.Utc;
+                    var tz = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+                    dateTime = TimeZoneInfo.ConvertTime((DateTime)dateTime, src, tz);
                 }
             }
             catch (Exception e) { }
