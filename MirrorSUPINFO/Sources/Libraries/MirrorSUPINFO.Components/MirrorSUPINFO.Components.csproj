@@ -123,6 +123,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SettingManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="ComponentModel\Services\SpeechRecognition\Grammar\Interfaces\IMirrorGramarObject.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\Grammar\Interfaces\IMirrorGrammar.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\Grammar\MirrorFileGramar.cs" />
     <Compile Include="ComponentModel\Services\SpeechRecognition\SpeechRecognitionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\MirrorSUPINFO.Components.rd.xml" />

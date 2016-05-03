@@ -13,9 +13,6 @@ namespace MirrorSUPINFO.SDK.Tools
         void StartRecognition();
         void StopRecognition();
 
-        Task<bool> AddGrammar(string filePath);
-
-
         #region events
 
         event TypedEventHandler<SpeechRecognizer, SpeechRecognitionHypothesisGeneratedEventArgs>

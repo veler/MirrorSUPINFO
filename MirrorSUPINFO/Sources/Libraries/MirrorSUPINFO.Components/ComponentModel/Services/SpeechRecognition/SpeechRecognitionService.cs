@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Media.SpeechRecognition;
+using MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Grammar;
+using MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Grammar.Interfaces;
 using MirrorSUPINFO.SDK.Tools;
 
 namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
@@ -19,10 +22,12 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
         private readonly SpeechRecognizer _recognizer;
         public SpeechRecognizer Recognizer => _recognizer;
 
-        private SpeechRecognitionService()
+        private List<IMirrorGrammar> MirrorGrammars { get; set; }
+
+        private SpeechRecognitionService(params string[] topics)
         {
             _recognizer = new SpeechRecognizer();
-
+            MirrorGrammars = new List<IMirrorGrammar>();
         }
 
         #region event handlers
@@ -60,30 +65,18 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
         #region Methods
 
 
+        public async Task CompileRecognition() => await _recognizer.CompileConstraintsAsync();
+
         public void StartRecognition() => _recognizer.ContinuousRecognitionSession.StartAsync();
 
         public void StopRecognition() => _recognizer.ContinuousRecognitionSession.StopAsync();
 
-        /// <summary>
-        /// Ajoute un fichier de grammaire xml a la reconnaissance vocal
-        /// </summary>
-        /// <param name="filePath">chemin du fichier dans le projet</param>
-        /// <returns>Si l'ajout et la compilation on était un succès</returns>
-        public async Task<bool> AddGrammar(string filePath)
+
+        public void AddGrammar(string filePath)
         {
-            var grammarContentFile = await Package.Current.InstalledLocation.GetFileAsync(filePath);
-            SpeechRecognitionGrammarFileConstraint grammarConstraint = new SpeechRecognitionGrammarFileConstraint(grammarContentFile);
 
-            _recognizer.Constraints.Add(grammarConstraint);
+            _recognizer.Constraints.Add(new SpeechRecognitionTopicConstraint(SpeechRecognitionScenario.Dictation, ""));
 
-            SpeechRecognitionCompilationResult compilationResult = await _recognizer.CompileConstraintsAsync();
-
-            if (compilationResult.Status != SpeechRecognitionResultStatus.Success)
-            {
-                _recognizer.Constraints.Remove(grammarConstraint);
-                return false;
-            }
-            return true;
         }
 
         #endregion
