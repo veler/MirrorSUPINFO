@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Media.SpeechRecognition;
-using MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Grammar;
-using MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Grammar.Interfaces;
+
 using MirrorSUPINFO.SDK.Tools;
 
 namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
@@ -22,12 +22,12 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
         private readonly SpeechRecognizer _recognizer;
         public SpeechRecognizer Recognizer => _recognizer;
 
-        private List<IMirrorGrammar> MirrorGrammars { get; set; }
-
         private SpeechRecognitionService(params string[] topics)
         {
             _recognizer = new SpeechRecognizer();
-            MirrorGrammars = new List<IMirrorGrammar>();
+            _recognizer.Constraints.Add(new SpeechRecognitionTopicConstraint(SpeechRecognitionScenario.WebSearch,
+                "webSearch"));
+            _recognizer.CompileConstraintsAsync().AsTask().Wait();
         }
 
         #region event handlers
@@ -71,13 +71,6 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
 
         public void StopRecognition() => _recognizer.ContinuousRecognitionSession.StopAsync();
 
-
-        public void AddGrammar(string filePath)
-        {
-
-            _recognizer.Constraints.Add(new SpeechRecognitionTopicConstraint(SpeechRecognitionScenario.Dictation, ""));
-
-        }
 
         #endregion
     }
