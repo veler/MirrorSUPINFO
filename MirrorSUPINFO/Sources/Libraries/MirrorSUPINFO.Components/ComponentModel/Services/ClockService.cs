@@ -70,7 +70,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services
         
         #endregion
 
-        #region Methods
+            #region Methods
         internal static ClockService GetService()
         {
             return _clockService ?? (_clockService = new ClockService());

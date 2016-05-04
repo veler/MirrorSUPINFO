@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
-using MirrorSUPINFO.Components.Models;
+using MirrorSUPINFO.Apps.Modules.Models.WeatherModel;
 using Newtonsoft.Json;
 
-namespace MirrorSUPINFO.Components.ComponentModel.Services
+namespace MirrorSUPINFO.Apps.ComponentModel
 {
     internal sealed class WeatherService
     {
@@ -15,28 +11,29 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services
 
         private const string Token = "6f020331153ad5878279f6a98a72ec51";
         private const string ApiUrl =
-           "http://api.openweathermap.org/data/2.5/weather?lat={0}&lon={1}&units=metric&APPID={2}";
+            "http://api.openweathermap.org/data/2.5/weather?q={0}&units=metric&APPID={1}";
 
         #endregion
 
         #region Constructor
 
-        public WeatherService(){}
+        public WeatherService()
+        {
+        }
 
         #endregion
 
         #region Methods
 
         /// <summary>
-        /// 
+        /// Get weather by location
         /// </summary>
-        /// <param name="lat"></param>
-        /// <param name="lon"></param>
+        /// <param name="location"></param>
         /// <returns></returns>
-        public static async Task<WeatherRoot> GetWeather(double lat, double lon)
+        public static async Task<WeatherRoot> GetWeather(string location)
         {
             var client = new HttpClient();
-            var url = string.Format(ApiUrl, lat, lon, Token);
+            var url = string.Format(ApiUrl, location, Token);
             var json = await client.GetStringAsync(url);
 
             if (string.IsNullOrWhiteSpace(json))
@@ -47,6 +44,5 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services
         }
 
         #endregion
-
     }
 }

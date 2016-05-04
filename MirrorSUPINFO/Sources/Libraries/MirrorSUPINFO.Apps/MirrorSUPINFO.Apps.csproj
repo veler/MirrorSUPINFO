@@ -107,13 +107,18 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComponentModel\WeatherService.cs" />
+    <Compile Include="Modules\Models\WeatherModel\Cloud.cs" />
+    <Compile Include="Modules\Models\WeatherModel\Coord.cs" />
+    <Compile Include="Modules\Models\WeatherModel\Main.cs" />
+    <Compile Include="Modules\Models\WeatherModel\System.cs" />
+    <Compile Include="Modules\Models\WeatherModel\Weather.cs" />
+    <Compile Include="Modules\Models\WeatherModel\WeatherRoot.cs" />
+    <Compile Include="Modules\Models\WeatherModel\Wind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\MirrorSUPINFO.Apps.rd.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ComponentModel\" />
-    <Folder Include="Modules\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MirrorSUPINFO.Design\MirrorSUPINFO.Design.csproj">
       <Project>{5db8b6ad-6aa9-4482-89f3-f1a83c564811}</Project>

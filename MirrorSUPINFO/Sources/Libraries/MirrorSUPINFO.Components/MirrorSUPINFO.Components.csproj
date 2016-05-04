@@ -127,13 +127,12 @@
     <Compile Include="ComponentModel\Services\DateTimeChangedEventArgs.cs" />
     <Compile Include="ComponentModel\Services\Module\ModuleManager.cs" />
     <Compile Include="ComponentModel\Services\Module\Tools.cs" />
-    <Compile Include="ComponentModel\Services\WeatherService.cs" />
-    <Compile Include="Models\Weather.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\MirrorSUPINFO.Components.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ComponentModel\Core\" />
+    <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
   </ItemGroup>
