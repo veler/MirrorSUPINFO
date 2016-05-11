@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Media.SpeechRecognition;
-
+using Windows.Storage;
+using MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.GrammarXml;
+using MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Lexer;
 using MirrorSUPINFO.SDK.Tools;
 
 namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
@@ -22,7 +24,9 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
         private readonly SpeechRecognizer _recognizer;
         public SpeechRecognizer Recognizer => _recognizer;
 
-        private SpeechRecognitionService(params string[] topics)
+        private readonly List<VoiceCommands> _gramarList = new List<VoiceCommands>();
+
+        private SpeechRecognitionService()
         {
             _recognizer = new SpeechRecognizer();
             _recognizer.Constraints.Add(new SpeechRecognitionTopicConstraint(SpeechRecognitionScenario.WebSearch,
@@ -71,6 +75,12 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
 
         public void StopRecognition() => _recognizer.ContinuousRecognitionSession.StopAsync();
 
+        public async void AddGrammarFile(StorageFile grammarFile)
+        {
+            var grammar = await Xml<VoiceCommands>.Deserialize(grammarFile);
+            _gramarList.Add(grammar);
+            RegexCreator creator = new RegexCreator(grammar);
+        }
 
         #endregion
     }

@@ -128,6 +128,7 @@
     <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\VoiceCommandsCommandSetCommand.cs" />
     <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\VoiceCommandsCommandSetPhraseList.cs" />
     <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\Xml.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\Lexer\CommandSolver.cs" />
     <Compile Include="ComponentModel\Services\SpeechRecognition\Lexer\RegexCreator.cs" />
     <Compile Include="ComponentModel\Services\SpeechRecognition\SpeechRecognitionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

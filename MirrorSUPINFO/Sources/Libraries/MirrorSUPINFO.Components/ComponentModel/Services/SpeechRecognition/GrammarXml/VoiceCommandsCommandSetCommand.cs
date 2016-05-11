@@ -10,16 +10,21 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Gra
         public string Example { get; set; }
 
         /// <remarks/>
-        public string ListenFor { get; set; }
+        [XmlElement("ListenFor")]
+        public string[] ListenFor { get; set; }
 
         /// <remarks/>
         public string Feedback { get; set; }
 
         /// <remarks/>
-        public object Navigate { get; set; }
+        public string Navigate { get; set; }
 
         /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
+
+        [XmlAttribute()]
+        public bool IsSecondAnswer { get; set; }
+
     }
 }

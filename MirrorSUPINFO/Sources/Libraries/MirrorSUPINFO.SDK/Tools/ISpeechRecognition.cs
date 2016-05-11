@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Media.SpeechRecognition;
+using Windows.Storage;
 
 namespace MirrorSUPINFO.SDK.Tools
 {
@@ -12,6 +13,8 @@ namespace MirrorSUPINFO.SDK.Tools
     {
         void StartRecognition();
         void StopRecognition();
+
+        void AddGrammarFile(StorageFile grammarFile);
 
         #region events
 
