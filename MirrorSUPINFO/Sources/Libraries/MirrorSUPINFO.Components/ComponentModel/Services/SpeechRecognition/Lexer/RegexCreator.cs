@@ -50,7 +50,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Lex
 
         private string ParseCrochet(string value)
         {
-            return new Regex(@"\[(.*?)\]").Replace(value, "($1)?");
+            return new Regex(@" ?\[(.*?)\]").Replace(value, "( $1)?");
         }
 
         private string ParseAcolade(string value)
