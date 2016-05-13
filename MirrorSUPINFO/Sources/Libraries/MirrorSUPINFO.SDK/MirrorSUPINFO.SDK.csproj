@@ -107,8 +107,17 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\PeriodicTaskTime.cs" />
+    <Compile Include="MirrorModule.cs" />
+    <Compile Include="Models\AuthenticationResult.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="ModulePage.cs" />
+    <Compile Include="ModulePageViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\IAuthenticationService.cs" />
+    <Compile Include="Tools\INavigationService.cs" />
     <Compile Include="Tools\INetworkService.cs" />
+    <Compile Include="Tools\ITools.cs" />
     <Compile Include="Tools\ISpeechRecognition.cs" />
     <EmbeddedResource Include="Properties\MirrorSUPINFO.SDK.rd.xml" />
   </ItemGroup>

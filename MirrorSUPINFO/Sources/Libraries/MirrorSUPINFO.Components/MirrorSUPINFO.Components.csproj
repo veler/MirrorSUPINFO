@@ -131,10 +131,15 @@
     <Compile Include="ComponentModel\Services\SpeechRecognition\Lexer\CommandSolver.cs" />
     <Compile Include="ComponentModel\Services\SpeechRecognition\Lexer\RegexCreator.cs" />
     <Compile Include="ComponentModel\Services\SpeechRecognition\SpeechRecognitionService.cs" />
+    <Compile Include="ComponentModel\Services\ClockService.cs" />
+    <Compile Include="ComponentModel\Services\DateTimeChangedEventArgs.cs" />
+    <Compile Include="ComponentModel\Services\Module\ModuleManager.cs" />
+    <Compile Include="ComponentModel\Services\Module\Tools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\MirrorSUPINFO.Components.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ComponentModel\Core\" />
     <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
