@@ -14,6 +14,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Lex
         private readonly VoiceCommands _voiceCommand;
 
         private Dictionary<string, List<string>> _valuesList;
+        public List<CommandSolver> Regexes { get; set; }
 
         public RegexCreator(VoiceCommands voiceCommand)
         {
@@ -29,20 +30,19 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Lex
                 _valuesList.Add(phraseList.Label, new List<string>(phraseList.Item.Select(i => i.Trim())));
             }
 
-            Regexes = new Dictionary<string, CommandSolver>();
+            Regexes = new List<CommandSolver>();
             foreach (var command in _voiceCommand.CommandSet.Command)
             {
-                Regexes.Add(command.Name, new CommandSolver() { MatchRegex = new Regex(GenerateRegexForCommand(command)), Name = command.Name, Navigation = command.Navigate, Answer = command.Feedback });
+                Regexes.Add( new CommandSolver { MatchRegex = new Regex(GenerateRegexForCommand(command),RegexOptions.IgnoreCase), Name = command.Name, Navigation = command.Navigate, Answer = command.Feedback });
             }
         }
 
-        public Dictionary<string, CommandSolver> Regexes { get; set; }
 
         public string GenerateRegexForCommand(VoiceCommandsCommandSetCommand command)
         {
             for (int i = 0; i < command.ListenFor.Length; i++)
             {
-                string baseString = ParseCrochet(command.ListenFor[i]);
+                string baseString = ParseCrochet(command.ListenFor[i].Trim());
                 command.ListenFor[i] = $"({ParseAcolade(baseString)})";
             }
             return string.Join("|", command.ListenFor.Select(lf=>lf.Trim()));

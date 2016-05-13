@@ -25,6 +25,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
         public SpeechRecognizer Recognizer => _recognizer;
 
         private readonly List<VoiceCommands> _gramarList = new List<VoiceCommands>();
+        private readonly List<CommandSolver> _commandSolvers = new List<CommandSolver>();
 
         private SpeechRecognitionService()
         {
@@ -32,7 +33,9 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
             _recognizer.Constraints.Add(new SpeechRecognitionTopicConstraint(SpeechRecognitionScenario.WebSearch,
                 "webSearch"));
             _recognizer.CompileConstraintsAsync().AsTask().Wait();
+            _recognizer.ContinuousRecognitionSession.ResultGenerated += RecognitionFound;
         }
+
 
         #region event handlers
 
@@ -64,6 +67,8 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
             remove { _recognizer.HypothesisGenerated -= value; }
         }
 
+        public event TypedEventHandler<SpeechRecognitionResult, CommandSolver> RecognitionCommandFound;
+
         #endregion
 
         #region Methods
@@ -75,11 +80,52 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
 
         public void StopRecognition() => _recognizer.ContinuousRecognitionSession.StopAsync();
 
+        /// <summary>
+        /// Ajouter un fichier de grammaire a la reconnaissance
+        /// </summary>
+        /// <param name="grammarFile"></param>
         public async void AddGrammarFile(StorageFile grammarFile)
         {
             var grammar = await Xml<VoiceCommands>.Deserialize(grammarFile);
             _gramarList.Add(grammar);
             RegexCreator creator = new RegexCreator(grammar);
+            _commandSolvers.AddRange(creator.Regexes);
+        }
+
+        /// <summary>
+        /// event de reconnaissance
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void RecognitionFound(SpeechContinuousRecognitionSession sender, SpeechContinuousRecognitionResultGeneratedEventArgs args)
+        {
+            if (args.Result.Status == SpeechRecognitionResultStatus.Success)
+            {
+                var command = FindCommand(args.Result.Text);
+                OnRecognitionCommandFound(args.Result, command);
+            }
+        }
+
+        /// <summary>
+        /// Trouve la commande correspondant au text
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>null if not found</returns>
+        public CommandSolver FindCommand(string text)
+        {
+            foreach (var commandSolver in _commandSolvers)
+            {
+                if (commandSolver.MatchRegex.IsMatch(text))
+                {
+                    return commandSolver;
+                }
+            }
+            return null;
+        }
+
+        protected virtual void OnRecognitionCommandFound(SpeechRecognitionResult sender, CommandSolver args)
+        {
+            RecognitionCommandFound?.Invoke(sender, args);
         }
 
         #endregion
