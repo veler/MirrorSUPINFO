@@ -11,6 +11,8 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Lex
 {
     public class RegexCreator
     {
+        public const string ASTERIX_REGEX_GROUP_NAME = "all";
+
         private readonly VoiceCommands _voiceCommand;
 
         private Dictionary<string, List<string>> _valuesList;
@@ -33,7 +35,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Lex
             Regexes = new List<CommandSolver>();
             foreach (var command in _voiceCommand.CommandSet.Command)
             {
-                Regexes.Add( new CommandSolver { MatchRegex = new Regex(GenerateRegexForCommand(command),RegexOptions.IgnoreCase), Name = command.Name, Navigation = command.Navigate, Answer = command.Feedback });
+                Regexes.Add(new CommandSolver { MatchRegex = new Regex(GenerateRegexForCommand(command), RegexOptions.IgnoreCase), Name = command.Name, Navigation = command.Navigate, Answer = command.Feedback });
             }
         }
 
@@ -45,7 +47,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Lex
                 string baseString = ParseCrochet(command.ListenFor[i].Trim());
                 command.ListenFor[i] = $"({ParseAcolade(baseString)})";
             }
-            return string.Join("|", command.ListenFor.Select(lf=>lf.Trim()));
+            return string.Join("|", command.ListenFor.Select(lf => lf.Trim()));
         }
 
         private string ParseCrochet(string value)
@@ -57,22 +59,34 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Lex
         {
             var regexAcolade = new Regex(@"\{(.*?)\}");
             var result = regexAcolade.Matches(value);
+            var groupNameIndex = new Dictionary<string, int>();
             foreach (Match match in result)
             {
                 if (_valuesList.ContainsKey(match.Groups[1].Value))
                 {
                     value = value.Remove(match.Index, match.Length);
-                    value = value.Insert(match.Index, $"({string.Join("|", _valuesList[match.Groups[1].Value])})");
+                    value = value.Insert(match.Index, $"(?<{GenerateGroupName(groupNameIndex, match.Value)}>{string.Join("|", _valuesList[match.Groups[1].Value])})");
                 }
                 else if (match.Groups[1].Value == "*")
                 {
                     value = value.Remove(match.Index, match.Length);
-                    value = value.Insert(match.Index, "(.*?)");
+                    value = value.Insert(match.Index, $"(?<{GenerateGroupName(groupNameIndex, ASTERIX_REGEX_GROUP_NAME)}>.*?)");
                 }
             }
             return value;
         }
 
-
+        private string GenerateGroupName(Dictionary<string, int> groupNameIndex, string name)
+        {
+            if (groupNameIndex.ContainsKey(name))
+            {
+                groupNameIndex[name]++;
+            }
+            else
+            {
+                groupNameIndex.Add(name, 0);
+            }
+            return $"{name}[{groupNameIndex[name]}]";
+        }
     }
 }

@@ -130,6 +130,7 @@
     <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\Xml.cs" />
     <Compile Include="ComponentModel\Services\SpeechRecognition\Lexer\CommandSolver.cs" />
     <Compile Include="ComponentModel\Services\SpeechRecognition\Lexer\RegexCreator.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\Lexer\VoiceRecognitionResult.cs" />
     <Compile Include="ComponentModel\Services\SpeechRecognition\SpeechRecognitionService.cs" />
     <Compile Include="ComponentModel\Services\ClockService.cs" />
     <Compile Include="ComponentModel\Services\DateTimeChangedEventArgs.cs" />
