@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace MirrorSUPINFO.Components.Tests
+namespace UnitTestProject1
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

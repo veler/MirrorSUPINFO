@@ -123,6 +123,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SettingManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\VoiceCommands.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\VoiceCommandsCommandSet.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\VoiceCommandsCommandSetCommand.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\VoiceCommandsCommandSetPhraseList.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\Xml.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\Lexer\CommandSolver.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\Lexer\RegexCreator.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\SpeechRecognitionService.cs" />
     <Compile Include="ComponentModel\Services\ClockService.cs" />
     <Compile Include="ComponentModel\Services\DateTimeChangedEventArgs.cs" />
     <Compile Include="ComponentModel\Services\Module\ModuleManager.cs" />
