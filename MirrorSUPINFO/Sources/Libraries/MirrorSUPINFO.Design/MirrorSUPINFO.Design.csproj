@@ -107,6 +107,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ListView.xaml.cs">
+      <DependentUpon>ListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TextBlock.xaml.cs">
       <DependentUpon>TextBlock.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,10 @@
     <EmbeddedResource Include="Properties\MirrorSUPINFO.Design.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\ListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\TextBlock.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -125,11 +132,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Theme\Default\Icons.xaml">
+    <EmbeddedResource Include="Theme\Default\Icons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Page>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Icons\Ressources\ratp\" />
@@ -137,6 +144,12 @@
     <Folder Include="Icons\Ressources\system\" />
     <Folder Include="Icons\Ressources\Transport\" />
     <Folder Include="Icons\Ressources\weather\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MirrorSUPINFO.SDK\MirrorSUPINFO.SDK.csproj">
+      <Project>{05EE98EB-5562-4BA6-B795-29C57F56A7A0}</Project>
+      <Name>MirrorSUPINFO.SDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

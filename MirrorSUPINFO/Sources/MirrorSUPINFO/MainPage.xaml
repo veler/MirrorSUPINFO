@@ -9,10 +9,11 @@
     mc:Ignorable="d">
 
     <Grid Background="Black">
-        <controls:IconButton Image="Assets/LockScreenLogo.scale-200.png" HorizontalAlignment="Right" VerticalAlignment="Top" ImageWidth="50" ImageHeight="50" Margin="0,10,10,0" />
-        <controls:IconButton Image="Assets/SplashScreen.scale-200.png" HorizontalAlignment="Right" VerticalAlignment="Top" ImageWidth="50" ImageHeight="50" Margin="0,97,10,0" />
-        <controls:IconButton Image="Assets/Square150x150Logo.scale-200.png" HorizontalAlignment="Right" VerticalAlignment="Top" ImageWidth="50" ImageHeight="50" Margin="0,184,10,0" />
-        <controls:TextBlock Text="18:20" Margin="10,56,10,0" Height="41" VerticalAlignment="Top"/>
-        <controls:TextBlock Text="Jeudi 21 Avril" Margin="10" FontSize="24px"/>
+        <controls:IconButton ImageKey="Bus" HorizontalAlignment="Right" VerticalAlignment="Top" ImageWidth="50" ImageHeight="50" Margin="0,26,10,0" Height="50" Width="50" />
+        <controls:TextBlock Text="18:20" Margin="10,56,0,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="123"/>
+        <controls:TextBlock Text="Jeudi 21 Avril" Margin="10,140,10,0" FontSize="24px" VerticalAlignment="Top" d:LayoutOverrides="Height"/>
+
+        <controls:ListView Margin="0,231,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Page>

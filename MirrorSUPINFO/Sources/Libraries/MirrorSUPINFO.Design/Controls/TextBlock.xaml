@@ -6,12 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300"
     d:DesignWidth="400"
-    Name="Tb">
+    Name="Tb" Height="35">
 
-    <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="18,10,0,0" TextWrapping="Wrap" Text="{Binding ElementName=Tb, Path=Text}" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Foreground="White"/>
+    <Grid Height="35" VerticalAlignment="Top">
+        <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding ElementName=Tb, Path=Text}" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Foreground="White" Height="35" d:LayoutOverrides="Width, LeftPosition, RightPosition"/>
 
     </Grid>
 </UserControl>
