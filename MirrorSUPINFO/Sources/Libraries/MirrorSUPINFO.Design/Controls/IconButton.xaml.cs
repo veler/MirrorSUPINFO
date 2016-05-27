@@ -38,16 +38,29 @@ namespace MirrorSUPINFO.Design.Controls
             "ImageHeight", typeof(double), typeof(IconButton), new PropertyMetadata(16d)
         );
 
+        //public string ImageKey
+        //{
+        //    get
+        //    {
+        //        var property = this.Resources[ImageKeyProperty].ToString();
+        //        return Convert(property);
+        //    }
+        //    set
+        //    {
+        //        propHolder.pathText = this.Resources[value].ToString();
+        //    }
+        //}
+
         public string ImageKey
         {
             get
             {
-                var property = this.Resources[ImageKeyProperty].ToString();
+                var property = this.Resources.MergedDictionaries[0][ImageKeyProperty].ToString();
                 return Convert(property);
             }
             set
             {
-                propHolder.pathText = this.Resources[value].ToString();
+                propHolder.pathText = this.Resources.MergedDictionaries[0][value].ToString();
             }
         }
 
