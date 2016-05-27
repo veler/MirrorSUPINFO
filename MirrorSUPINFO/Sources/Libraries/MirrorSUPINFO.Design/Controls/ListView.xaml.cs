@@ -1,19 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace MirrorSUPINFO.Design.Controls
 {
@@ -22,6 +8,21 @@ namespace MirrorSUPINFO.Design.Controls
         public ListView()
         {
             this.InitializeComponent();
+
+            List<Notifications> items = new List<Notifications>();
+            items.Add(new Notifications() { Icon = "Bus", Content = "Notification 1" });
+            items.Add(new Notifications() { Icon = "Bus", Content = "Notification 2" });
+            items.Add(new Notifications() { Icon = "Bus", Content = "Notification 3" });
+            listView.ItemsSource = items;
+
+            this.DataContext = items;
         }
+    }
+
+    public class Notifications
+    {
+        public string Icon { get; set; }
+
+        public string Content { get; set; }
     }
 }
