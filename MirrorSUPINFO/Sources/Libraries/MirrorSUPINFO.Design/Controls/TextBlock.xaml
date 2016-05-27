@@ -1,0 +1,16 @@
+﻿<UserControl
+    x:Class="MirrorSUPINFO.Design.Controls.TextBlock"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MirrorSUPINFO.Design.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="400"
+    Name="Tb" Height="35">
+
+    <Grid Height="35" VerticalAlignment="Top">
+        <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding ElementName=Tb, Path=Text}" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Foreground="White" Height="35" d:LayoutOverrides="Width, LeftPosition, RightPosition"/>
+
+    </Grid>
+</UserControl>
