@@ -107,6 +107,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PathConverter\StringToPathGeometryConverter.cs" />
     <Compile Include="Enums\PeriodicTaskTime.cs" />
     <Compile Include="MirrorModule.cs" />
     <Compile Include="Models\AuthenticationResult.cs" />
