@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
-using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Media.SpeechRecognition;
 using Windows.Storage;
@@ -40,7 +38,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
         #region event handlers
 
         /// <summary>
-        /// Lancer a la fin de la dicté depar l'utilisateur
+        /// Lancer a la fin de la dicté depart l'utilisateur
         /// </summary>
         public event TypedEventHandler<SpeechContinuousRecognitionSession, SpeechContinuousRecognitionResultGeneratedEventArgs>
             RecognitionResultGenerated
@@ -121,7 +119,11 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
                     var result = new Dictionary<string, string>();
                     foreach (var groupName in commandSolver.MatchRegex.GetGroupNames())
                     {
-                        result.Add(groupName,match.Groups[groupName].Value);
+                        int number;
+                        if (!int.TryParse(groupName, out number) && !string.IsNullOrWhiteSpace(match.Groups[groupName].Value))
+                        {
+                            result.Add(groupName, match.Groups[groupName].Value);
+                        }
                     }
                     return new VoiceRecognitionResult()
                     {

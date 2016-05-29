@@ -9,16 +9,11 @@
       <Navigate/>
     </Command>
 
-    <Command Name="showTripToDestination">
-      <Example> show trip to London  </Example>
-      <ListenFor> show trip to {destination} </ListenFor>
-      <Feedback> Showing trip to {destination} </Feedback>
-      <Navigate/>
-    </Command>
-    <Command Name="showTripToDestination">
-      <Example> show trip to London  </Example>
-      <ListenFor> show trip to {destination} </ListenFor>
-      <Feedback> Showing trip to {destination} </Feedback>
+    <Command Name="searchDestination">
+      <Example> search trip to London  </Example>
+      <ListenFor> search trip to {destination} </ListenFor>
+      <ListenFor> search [trip] to {*} </ListenFor>
+      <Feedback> Searching trip to {destination} </Feedback>
       <Navigate/>
     </Command>
     <PhraseList Label="destination">
@@ -28,7 +23,5 @@
     </PhraseList>
 
   </CommandSet>
-
-  <!-- Other CommandSets for other languages -->
 
 </VoiceCommands>

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.VoiceCommands;
 using MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.GrammarXml;
 
 namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Lexer
@@ -70,7 +66,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Lex
                 else if (match.Groups[1].Value == "*")
                 {
                     value = value.Remove(match.Index, match.Length);
-                    value = value.Insert(match.Index, $"(?<{GenerateGroupName(groupNameIndex, ASTERIX_REGEX_GROUP_NAME)}>.*?)");
+                    value = value.Insert(match.Index, $"(?<{GenerateGroupName(groupNameIndex, ASTERIX_REGEX_GROUP_NAME)}>.+)");
                 }
             }
             return value;
@@ -86,7 +82,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition.Lex
             {
                 groupNameIndex.Add(name, 0);
             }
-            return $"{name}[{groupNameIndex[name]}]";
+            return $"{name.Trim('{','}')}{groupNameIndex[name]}";
         }
     }
 }
