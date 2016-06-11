@@ -5,9 +5,12 @@
     xmlns:local="using:MirrorSUPINFO"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:MirrorSUPINFO.Design.Controls"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid Background="Black">
+        <controls:IconButton ImageKey="Bus" HorizontalAlignment="Right" VerticalAlignment="Top" ImageWidth="50" ImageHeight="50" Margin="0,26,10,0" Height="50" Width="50" />
+        <controls:TextBlock Text="18:20" Margin="10,56,0,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="123"/>
+        <controls:TextBlock Text="Jeudi 21 Avril" Margin="10,140,10,0" FontSize="24px" VerticalAlignment="Top" d:LayoutOverrides="Height"/>
     </Grid>
 </Page>
