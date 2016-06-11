@@ -105,13 +105,42 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\fr-FR\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComponentModel\Hardware\SparkFun_APDS9960.cs" />
+    <Compile Include="ComponentModel\Hardware\SparkFun_APDS9960_Helper.cs" />
+    <Compile Include="ComponentModel\Providers\LanguageManager.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LanguageManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComponentModel\Providers\Networking\Internet.cs" />
+    <Compile Include="ComponentModel\Providers\Networking\NetworkManager.cs" />
+    <Compile Include="ComponentModel\Providers\SettingManager.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SettingManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\VoiceCommands.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\VoiceCommandsCommandSet.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\VoiceCommandsCommandSetCommand.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\VoiceCommandsCommandSetPhraseList.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\GrammarXml\Xml.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\Lexer\CommandSolver.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\Lexer\RegexCreator.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\Lexer\VoiceRecognitionResult.cs" />
+    <Compile Include="ComponentModel\Services\SpeechRecognition\SpeechRecognitionService.cs" />
+    <Compile Include="ComponentModel\Services\ClockService.cs" />
+    <Compile Include="ComponentModel\Services\DateTimeChangedEventArgs.cs" />
+    <Compile Include="ComponentModel\Services\Module\ModuleManager.cs" />
+    <Compile Include="ComponentModel\Services\Module\Tools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\MirrorSUPINFO.Components.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ComponentModel\" />
+    <Folder Include="ComponentModel\Core\" />
     <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
@@ -130,6 +159,19 @@
     <SDKReference Include="WindowsIoT, Version=10.0.10586.0">
       <Name>Windows IoT Extensions for the UWP</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ComponentModel\Providers\LanguageManager.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>LanguageManager.cs</LastGenOutput>
+    </Content>
+    <Content Include="ComponentModel\Providers\SettingManager.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SettingManager.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

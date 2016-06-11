@@ -1,0 +1,29 @@
+﻿<UserControl
+    x:Class="MirrorSUPINFO.Design.Controls.IconButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MirrorSUPINFO.Design.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pathConverter="using:MirrorSUPINFO.SDK.PathConverter"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    Name="Ib">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <pathConverter:StringToPathGeometryConverter x:Key="Converter"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Theme/Default/Icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Canvas Width="{Binding ElementName=Ib, Path=ImageWidth}" Height="{Binding ElementName=Ib, Path=ImageHeight}">
+        <Canvas Width="{Binding ElementName=Ib, Path=ImageWidth}" Height="{Binding ElementName=Ib, Path=ImageHeight}" Canvas.Left="0" Canvas.Top="0">
+            <Path x:Name="Path" Stretch="Fill" UseLayoutRounding="False" Fill="White" Height="{Binding ElementName=Ib, Path=ImageHeight}" Width="{Binding ElementName=Ib, Path=ImageWidth}" Data="{Binding pathText, Converter={StaticResource Converter}}"/>
+        </Canvas>
+    </Canvas>
+
+</UserControl>

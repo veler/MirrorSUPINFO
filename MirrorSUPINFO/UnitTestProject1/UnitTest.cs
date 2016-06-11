@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
-namespace MirrorSUPINFO.Components.Tests
+namespace UnitTestProject1
 {
     [TestClass]
     public class UnitTest1
@@ -9,6 +9,7 @@ namespace MirrorSUPINFO.Components.Tests
         [TestMethod]
         public void TestMethod1()
         {
+            Assert.IsTrue(true);
         }
     }
 }
