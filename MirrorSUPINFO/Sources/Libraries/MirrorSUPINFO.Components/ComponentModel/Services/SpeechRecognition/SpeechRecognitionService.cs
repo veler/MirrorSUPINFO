@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
-using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Media.SpeechRecognition;
 using Windows.Storage;
@@ -40,7 +38,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
         #region event handlers
 
         /// <summary>
-        /// Lancer a la fin de la dicté depar l'utilisateur
+        /// Lancer a la fin de la dicté depart l'utilisateur
         /// </summary>
         public event TypedEventHandler<SpeechContinuousRecognitionSession, SpeechContinuousRecognitionResultGeneratedEventArgs>
             RecognitionResultGenerated
@@ -67,7 +65,7 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
             remove { _recognizer.HypothesisGenerated -= value; }
         }
 
-        public event TypedEventHandler<SpeechRecognitionResult, CommandSolver> RecognitionCommandFound;
+        public event TypedEventHandler<SpeechRecognitionResult, VoiceRecognitionResult> RecognitionCommandFound;
 
         #endregion
 
@@ -111,19 +109,33 @@ namespace MirrorSUPINFO.Components.ComponentModel.Services.SpeechRecognition
         /// </summary>
         /// <param name="text"></param>
         /// <returns>null if not found</returns>
-        public CommandSolver FindCommand(string text)
+        public VoiceRecognitionResult FindCommand(string text)
         {
             foreach (var commandSolver in _commandSolvers)
             {
-                if (commandSolver.MatchRegex.IsMatch(text))
+                var match = commandSolver.MatchRegex.Match(text);
+                if (match.Success)
                 {
-                    return commandSolver;
+                    var result = new Dictionary<string, string>();
+                    foreach (var groupName in commandSolver.MatchRegex.GetGroupNames())
+                    {
+                        int number;
+                        if (!int.TryParse(groupName, out number) && !string.IsNullOrWhiteSpace(match.Groups[groupName].Value))
+                        {
+                            result.Add(groupName, match.Groups[groupName].Value);
+                        }
+                    }
+                    return new VoiceRecognitionResult()
+                    {
+                        CommandSolver = commandSolver,
+                        ResultGroups = result
+                    };
                 }
             }
             return null;
         }
 
-        protected virtual void OnRecognitionCommandFound(SpeechRecognitionResult sender, CommandSolver args)
+        protected virtual void OnRecognitionCommandFound(SpeechRecognitionResult sender, VoiceRecognitionResult args)
         {
             RecognitionCommandFound?.Invoke(sender, args);
         }
